@@ -1,10 +1,8 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-color: #0d1120;
   color: #ffffff;
@@ -12,7 +10,6 @@ body {
   padding: 60px 20px;
 }
 
-/* Header */
 .page-header {
   text-align: center;
   margin-bottom: 60px;
@@ -28,25 +25,23 @@ body {
   font-size: 18px;
 }
 
-/* Cards container */
 .pricing-cards {
   display: flex;
   justify-content: center;
   align-items: stretch;
   gap: 24px;
-  flex-wrap: wrap; /* This allows cards to wrap to the next line naturally */
+  flex-wrap: wrap;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Base card */
 .card {
   background-color: #161b2e;
   border: 1px solid #2a3049;
   border-radius: 16px;
   padding: 32px;
-  flex: 1 1 300px;     /* Allows cards to shrink, grow, and wrap one by one */
-  max-width: 360px;    /* Prevents them from getting too wide on large screens */
+  flex: 1 1 300px; 
+  max-width: 360px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -57,12 +52,10 @@ body {
   transform: translateY(-8px);
 }
 
-/* Pro card – taller + purple border on desktop */
 .card.pro {
   border: 2px solid #6366f1;
 }
 
-/* MOST POPULAR badge */
 .badge {
   position: absolute;
   top: -14px;
@@ -78,7 +71,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Typography */
 .card h2 {
   font-size: 24px;
   margin-bottom: 8px;
@@ -104,7 +96,6 @@ body {
   color: #9ca3af;
 }
 
-/* Features */
 .card .features {
   list-style: none;
   margin-bottom: 32px;
@@ -122,7 +113,6 @@ body {
   border-bottom: none;
 }
 
-/* Buttons */
 .card button {
   width: 100%;
   padding: 14px;
@@ -150,9 +140,6 @@ body {
   background-color: #4f46e5;
 }
 
-/* ========== Responsive ========== */
-
-/* Mobile padding adjustments only */
 @media (max-width: 1050px) {
   .pricing-cards {
     flex-direction: column; /* Forces them to stack one on top of the other directly */
