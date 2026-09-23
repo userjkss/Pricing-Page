@@ -1,0 +1,137 @@
+/* Reset some default browser spacing so we start from a clean slate */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0d1120;   /* the dark navy background */
+  color: #ffffff;              /* default text color: white */
+  font-family: Arial, sans-serif;
+  padding: 60px 20px;
+}
+
+/* PART 1: Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-header h1 {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  color: #9ca3af;   /* muted gray for the subtitle */
+  font-size: 18px;
+}
+
+/* PART 2: Cards container - this is where Flexbox does the work */
+.pricing-cards {
+  display: flex;           /* lay children out in a row */
+  justify-content: center; /* center the row horizontally */
+  align-items: center;      /* center cards vertically so a taller one sticks out both ways */
+  gap: 24px;                /* space between cards */
+  flex-wrap: wrap;          /* let cards stack on small screens */
+}
+
+/* Each individual card */
+.card {
+  background-color: #161b2e;
+  border: 1px solid #2a3049;
+  border-radius: 12px;
+  padding: 32px;
+  width: 300px;
+  min-height: 480px;       /* shared floor height so Free and Enterprise match */
+  display: flex;
+  flex-direction: column;  /* stack children top-to-bottom */
+  position: relative; /* needed so the badge can position itself relative to this card */
+  transition: transform 0.2s ease; /* smooths out any change to transform over 0.2 seconds */
+}
+
+.card:hover {
+  transform: translateY(-8px); /* move the card up 8px while the mouse is over it */
+}
+
+/* The Pro card gets a purple border instead of the default gray */
+.card.pro {
+  border: 2px solid #6366f1;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+/* The floating "MOST POPULAR" badge */
+.badge {
+  position: absolute;
+  top: -14px;              /* pull it up so it overlaps the top edge of the card */
+  left: 50%;
+  transform: translateX(-50%); /* center it horizontally regardless of its width */
+  background-color: #6366f1;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 16px;
+  border-radius: 999px;    /* large radius = fully rounded pill shape */
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.card .description {
+  color: #9ca3af;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.card .price {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.card .price .dollar,
+.card .price .period {
+  font-size: 18px;
+  font-weight: normal;
+  color: #9ca3af;
+}
+
+/* Feature list */
+.card .features {
+  list-style: none;   /* remove default bullet points */
+  margin-bottom: 32px;
+}
+
+.card .features li {
+  padding: 12px 0;
+  border-bottom: 1px solid #2a3049; /* thin divider line between items */
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.card .features li:last-child {
+  border-bottom: none; /* no line after the final item */
+}
+
+/* Buttons */
+.card button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #4b5568;
+  color: #ffffff;
+  margin-top: auto; /* pushes the button to the bottom of the flex column, however tall the content above it is */
+}
+
+.card button.highlight-btn {
+  background-color: #6366f1;
+  border: none;
+}
