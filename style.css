@@ -1,4 +1,4 @@
-/* Reset some default browser spacing so we start from a clean slate */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,13 +6,13 @@
 }
 
 body {
-  background-color: #0d1120;   /* the dark navy background */
-  color: #ffffff;              /* default text color: white */
+  background-color: #0d1120;
+  color: #ffffff;
   font-family: Arial, sans-serif;
   padding: 60px 20px;
 }
 
-/* PART 1: Header */
+/* Header */
 .page-header {
   text-align: center;
   margin-bottom: 60px;
@@ -24,58 +24,61 @@ body {
 }
 
 .page-header p {
-  color: #9ca3af;   /* muted gray for the subtitle */
+  color: #9ca3af;
   font-size: 18px;
 }
 
-/* PART 2: Cards container - this is where Flexbox does the work */
+/* Cards container */
 .pricing-cards {
-  display: flex;           /* lay children out in a row */
-  justify-content: center; /* center the row horizontally */
-  align-items: center;      /* center cards vertically so a taller one sticks out both ways */
-  gap: 24px;                /* space between cards */
-  flex-wrap: wrap;          /* let cards stack on small screens */
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: wrap; /* This allows cards to wrap to the next line naturally */
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* Each individual card */
+/* Base card */
 .card {
   background-color: #161b2e;
   border: 1px solid #2a3049;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 32px;
-  width: 300px;
-  min-height: 480px;       /* shared floor height so Free and Enterprise match */
+  flex: 1 1 300px;     /* Allows cards to shrink, grow, and wrap one by one */
+  max-width: 360px;    /* Prevents them from getting too wide on large screens */
   display: flex;
-  flex-direction: column;  /* stack children top-to-bottom */
-  position: relative; /* needed so the badge can position itself relative to this card */
-  transition: transform 0.2s ease; /* smooths out any change to transform over 0.2 seconds */
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px); /* move the card up 8px while the mouse is over it */
+  transform: translateY(-8px);
 }
 
-/* The Pro card gets a purple border instead of the default gray */
+/* Pro card – taller + purple border on desktop */
 .card.pro {
   border: 2px solid #6366f1;
-  padding-top: 48px;
-  padding-bottom: 48px;
 }
 
-/* The floating "MOST POPULAR" badge */
+/* MOST POPULAR badge */
 .badge {
   position: absolute;
-  top: -14px;              /* pull it up so it overlaps the top edge of the card */
+  top: -14px;
   left: 50%;
-  transform: translateX(-50%); /* center it horizontally regardless of its width */
+  transform: translateX(-50%);
   background-color: #6366f1;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
-  padding: 6px 16px;
-  border-radius: 999px;    /* large radius = fully rounded pill shape */
+  padding: 6px 18px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
+/* Typography */
 .card h2 {
   font-size: 24px;
   margin-bottom: 8px;
@@ -84,13 +87,14 @@ body {
 .card .description {
   color: #9ca3af;
   font-size: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  line-height: 1.4;
 }
 
 .card .price {
-  font-size: 40px;
+  font-size: 42px;
   font-weight: bold;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .card .price .dollar,
@@ -100,38 +104,63 @@ body {
   color: #9ca3af;
 }
 
-/* Feature list */
+/* Features */
 .card .features {
-  list-style: none;   /* remove default bullet points */
+  list-style: none;
   margin-bottom: 32px;
+  flex-grow: 1;
 }
 
 .card .features li {
   padding: 12px 0;
-  border-bottom: 1px solid #2a3049; /* thin divider line between items */
+  border-bottom: 1px solid #2a3049;
   font-size: 14px;
   color: #d1d5db;
 }
 
 .card .features li:last-child {
-  border-bottom: none; /* no line after the final item */
+  border-bottom: none;
 }
 
 /* Buttons */
 .card button {
   width: 100%;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #4b5568;
   color: #ffffff;
-  margin-top: auto; /* pushes the button to the bottom of the flex column, however tall the content above it is */
+  margin-top: auto;
+  transition: background-color 0.2s ease;
+}
+
+.card button:hover {
+  background-color: #1f2937;
 }
 
 .card button.highlight-btn {
   background-color: #6366f1;
   border: none;
+}
+
+.card button.highlight-btn:hover {
+  background-color: #4f46e5;
+}
+
+/* ========== Responsive ========== */
+
+/* Mobile padding adjustments only */
+@media (max-width: 1050px) {
+  .pricing-cards {
+    flex-direction: column; /* Forces them to stack one on top of the other directly */
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 360px;
+  }
 }
